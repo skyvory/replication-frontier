@@ -18,6 +18,10 @@ const appRoutes: Routes = [
 		path: 'home',
 		component: HomeComponent,
 	},
+	{
+		path: 'refresh',
+		redirectTo: '/home',
+	},
 	// {
 	// 	path: '**',
 	// 	component: HomeComponent,

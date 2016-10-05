@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 	template: `
 		<nav>
 		<a routerLink="/home" routerLinkActive="active">Home</a>
+		<a routerLink="/refresh" routerLinkActive="active">Refresh</a>
 		<a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
 		<a routerLink="/heroes" routerLinkActive="active">Heroes</a>
 		</nav>

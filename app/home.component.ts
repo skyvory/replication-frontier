@@ -20,15 +20,11 @@ export class HomeComponent implements OnInit {
 		private threadService: ThreadService
 	) {}
 
-	// getThreads(): void {
-	// 	this.threadService.getThreads().then(function(threads) {
-	// 		console.log(threads);
-	// 		threads => this.threads = threads;
-	// 	});
-	// }
-
 	getThreads(): void {
-		this.threadService.getThreads();
+		this.threadService.getThreads().then(threads => {
+			this.threads = threads;
+			console.log(this.threads);
+		});
 	}
 
 	ngOnInit(): void {

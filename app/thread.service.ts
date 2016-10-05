@@ -12,15 +12,11 @@ export class ThreadService {
 
 	private threadUrl = 'http://localhost/replication-dimension/public/api/thread';
 
-	getThreads(): Promise<void> {
-		console.warn("AAA");
-		return this.http.get(this.threadUrl).toPromise().then(function(response) {
-			console.warn(response);
-		}).catch(e => {console.warn(e);});
-		// return this.http.get('http://localhost/replication-dimension/public/api/thread')
-		// 	.toPromise()
-		// 	.then(response => response.json().data as Thread[])
-		// 	.catch(this.handleError);
+	getThreads(): Promise<any[]> {
+		return this.http.get('http://localhost/replication-dimension/public/api/thread')
+			.toPromise()
+			.then(response => response.json().data as any[])
+			.catch(this.handleError);
 	}
 
 	private headers = new Headers({'Content-Type': 'application/json'});

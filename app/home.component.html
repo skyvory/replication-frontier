@@ -1,9 +1,31 @@
 <h2>Threads</h2>
 
-<ul>
-	<li *ngFor="let thread of threads">
-		<p>{{thread.id}}</p>
-		<p>{{thread.url}}</p>
-		<!-- <p>{{thread.download_directory</p> -->
-	</li>
-</ul>
+<div style="width:100%;">
+	<div style="width:55%;float:left;">
+	<ol>
+		<li *ngFor="let thread of threads">
+			<span style="font-size:0.7em;"><strong>{{thread.id}}</strong> {{thread.name}} </span>
+			<br />
+			<span style="font-size:0.9em;"><em>{{thread.url}}</em></span>
+			<br />
+			<span style="font-size:0.6em;">{{thread.download_directory}}</span>
+			<br />
+			<span style="font-size:0.3em;">{{thread.status}} {{thread.last_update}}</span>
+		</li>
+	</ol>
+	</div>
+	<div style="width:42%;float:left;">
+		<span>img here</span>
+		<span>img here</span><span>img here</span><span>img here</span><span>img here</span><span>img here</span><span>img here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span>
+		<span> here</span>
+		<span> here</span>
+		<span> here</span>
+		<span> here</span>
+		<p>img here</p>
+		<p>img here</p>
+		<p>img here</p>
+		<p>img here</p>
+		<p>img here</p>
+	</div>
+	<div style="clear:both"></div>
+</div>
