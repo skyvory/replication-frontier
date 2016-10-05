@@ -11,21 +11,14 @@
 			<span style="font-size:0.6em;">{{thread.download_directory}}</span>
 			<br />
 			<span style="font-size:0.3em;">{{thread.status}} {{thread.last_update}}</span>
+			<button (click)="viewImages(thread)">View Images</button>
 		</li>
 	</ol>
 	</div>
 	<div style="width:42%;float:left;">
-		<span>img here</span>
-		<span>img here</span><span>img here</span><span>img here</span><span>img here</span><span>img here</span><span>img here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span><span> here</span>
-		<span> here</span>
-		<span> here</span>
-		<span> here</span>
-		<span> here</span>
-		<p>img here</p>
-		<p>img here</p>
-		<p>img here</p>
-		<p>img here</p>
-		<p>img here</p>
+		<div *ngIf="images">
+			<img *ngFor="let image of images" src="{{image.thumbnail_url}}">
+		</div>
 	</div>
 	<div style="clear:both"></div>
 </div>

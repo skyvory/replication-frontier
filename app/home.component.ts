@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-	nothread: Thread[];
 	threads: Thread[];
+	images: any[];
 
 	constructor(
 		private router: Router,
@@ -24,6 +24,19 @@ export class HomeComponent implements OnInit {
 		this.threadService.getThreads().then(threads => {
 			this.threads = threads;
 			console.log(this.threads);
+		});
+	}
+
+	viewImages(thread):void {
+		this.threadService.getSavedImages(thread.id).then(data => {
+			let availableImages = [];
+			for(let i of data.images) {
+				if(i.download_status == 1) {
+					i.thumbnail_url = 'http://localhost/replication-dimension/public/thumbnails/' + i.thread_id + '/~thumb_' + i.name;
+					availableImages.push(i);
+				}
+			}
+			this.images = availableImages;
 		});
 	}
 

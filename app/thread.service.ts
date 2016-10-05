@@ -10,7 +10,8 @@ export class ThreadService {
 	
 	constructor(private http: Http) {}
 
-	private threadUrl = 'http://localhost/replication-dimension/public/api/thread';
+	private headers = new Headers({'Content-Type': 'application/json'});
+	// private threadUrl = 'http://localhost/replication-dimension/public/api/thread';
 
 	getThreads(): Promise<any[]> {
 		return this.http.get('http://localhost/replication-dimension/public/api/thread')
@@ -19,7 +20,13 @@ export class ThreadService {
 			.catch(this.handleError);
 	}
 
-	private headers = new Headers({'Content-Type': 'application/json'});
+	getSavedImages(threadId:number): Promise<any> {
+		return this.http.get(`http://localhost/replication-dimension/public/api/thread/${threadId}/images`)
+			.toPromise()
+			.then(response => response.json().data as any[])
+			.catch(this.handleError);
+	}
+
 
 	private handleError(error: any): Promise<any> {
 		console.warn('An error occurred', error);
