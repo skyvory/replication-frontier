@@ -56,9 +56,6 @@ export class HomeComponent implements OnInit {
 			let newImages = data.images;
 			this.newImagesCount = data.images.length;
 
-			// console.log(data.images[Object.keys(data.images)[0]]);
-			// console.info(thread);
-
 			var i = 0;
 			// fetch as scoped function
 			let fetch = (imageIndex:number) => {
@@ -87,28 +84,12 @@ export class HomeComponent implements OnInit {
 					}
 				});
 			}
-			fetch(i);
+			if(this.newImagesCount > 0) {
+				fetch(i);
+			}
 
-			// for(let img of data.images) {
-			// 	this.imageService.loadImage(img.thread_id, img.url).then(data => {
-			// 		let newImageMeta = {
-			// 			'id': data.id,
-			// 			'thread_id': thread.id,
-			// 			'url': img.url,
-			// 			'name': data.name,
-			// 			'size': data.size,
-			// 			'thumb': data.thumb,
-			// 			'download_status': 1,
-			// 		};
-			// 		thread.images.push(newImageMeta);
-			// 	});
-			// }
 		});
 	}
-
-	// doLoadImage(image):void {
-	// 	this.oij
-	// }
 
 	ngOnInit(): void {
 		this.getThreads();
