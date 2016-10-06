@@ -7,6 +7,7 @@ import { AppComponent }        from './app.component';
 import { routing } from './app.routing';
 
 import { ThreadService } from './thread.service';
+import { ImageService } from './image.service';
 import { HomeComponent } from './home.component';
 
 
@@ -49,6 +50,7 @@ import { HeroService }         from './hero.service';
 	],
 	providers: [
 		ThreadService,
+		ImageService,
 
 
 		HeroService

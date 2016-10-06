@@ -11,7 +11,6 @@ export class ThreadService {
 	constructor(private http: Http) {}
 
 	private headers = new Headers({'Content-Type': 'application/json'});
-	// private threadUrl = 'http://localhost/replication-dimension/public/api/thread';
 
 	getThreads(): Promise<any[]> {
 		return this.http.get('http://localhost/replication-dimension/public/api/thread')
@@ -26,6 +25,14 @@ export class ThreadService {
 			.then(response => response.json().data as any[])
 			.catch(this.handleError);
 	}
+
+	getNewImagesList(threadId:number): Promise<any> {
+		return this.http.get(`http://localhost/replication-dimension/public/api/thread/${threadId}/load`)
+			.toPromise()
+			.then(response => response.json().data as any[])
+			.catch(this.handleError);
+	}
+	
 
 
 	private handleError(error: any): Promise<any> {
