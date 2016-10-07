@@ -40,6 +40,13 @@ export class ThreadService {
 			.catch(this.handleError);
 	}
 
+	deleteThread(threadId:number): Promise<any> {
+		return this.http.delete(`http://localhost/replication-dimension/public/api/thread/${threadId}`)
+			.toPromise()
+			.then(() => null)
+			.catch(this.handleError);
+	}
+
 
 
 	private handleError(error: any): Promise<any> {

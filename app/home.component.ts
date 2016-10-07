@@ -105,6 +105,13 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
+	delete(thread:any): void {
+		this.threadService.deleteThread(thread.id).then(() => {
+			let index = this.threads.indexOf(thread);
+			this.threads.splice(index, 1);
+		});
+	}
+
 	ngOnInit(): void {
 		this.getThreads();
 	}
