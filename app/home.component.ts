@@ -112,6 +112,13 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
+	excludeImage(image:any):void {
+		this.imageService.exclude(image.id).then(() => {
+			let index = this.images.indexOf(image);
+			this.images.splice(index, 1);
+		});
+	}
+
 	ngOnInit(): void {
 		this.getThreads();
 	}

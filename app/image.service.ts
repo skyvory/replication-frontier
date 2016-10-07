@@ -17,6 +17,13 @@ export class ImageService {
 			.catch(this.handleError);
 	}
 
+	exclude(imageId:number): Promise<any> {
+		return this.http.delete(`http://localhost/replication-dimension/public/api/image/${imageId}/exclude`)
+			.toPromise()
+			.then(() => null)
+			.catch(this.handleError);
+	}
+
 	private handleError(error: any): Promise<any> {
 		console.warn('An error occured', error);
 		return Promise.reject(error.message || error);
