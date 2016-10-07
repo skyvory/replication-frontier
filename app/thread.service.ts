@@ -32,7 +32,14 @@ export class ThreadService {
 			.then(response => response.json().data as any[])
 			.catch(this.handleError);
 	}
-	
+
+	createThread(url:string, directory:string): Promise<any> {
+		return this.http.post('http://localhost/replication-dimension/public/api/thread/new', JSON.stringify({url: url, download_directory: directory}), {headers: this.headers})
+			.toPromise()
+			.then(response => response.json().data as any[])
+			.catch(this.handleError);
+	}
+
 
 
 	private handleError(error: any): Promise<any> {

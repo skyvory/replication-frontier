@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
 			this.newImagesCount = data.images.length;
 
 			var i = 0;
-			// fetch as scoped function
+			// define fetch as scoped function
 			let fetch = (imageIndex:number) => {
 				console.warn(data.images[Object.keys(data.images)[i]]);
 
@@ -88,6 +88,20 @@ export class HomeComponent implements OnInit {
 				fetch(i);
 			}
 
+		});
+	}
+
+	create(url: string, directory: string): void {
+		this.threadService.createThread(url, directory).then(data => {
+			let newThread = {
+				'id': data.thread.id,
+				'name': data.thread.name,
+				'last_update': data.thread.last_update,
+				'url': url,
+				'download_directory': directory,
+				'status': 1,
+			};
+			this.threads.push(newThread);
 		});
 	}
 

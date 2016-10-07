@@ -1,5 +1,13 @@
 <h2>Threads</h2>
 
+<div>
+	<label>URL: </label>
+	<input #newThreadUrl />
+	<label>Download Directory: </label>
+	<input #newThreadDownloadDirectory />
+	<button (click)="create(newThreadUrl.value, newThreadDownloadDirectory.value);">Create</button>
+</div>
+
 <div style="width:100%;">
 	<div style="width:38%;float:left;">
 	<ol>
