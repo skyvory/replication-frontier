@@ -45,11 +45,13 @@ export class HomeComponent implements OnInit {
 	// assigned as global variable for progress status on UI
 	newImagesCount:number = 0;
 	newImagesLoadedCount = 0;
+	downloading = false;
 
 	loadNewImages(thread):void {
 		// reset image count status value
 		this.newImagesCount = 0;
 		this.newImagesLoadedCount = 0;
+		this.downloading = true;
 
 		this.threadService.getNewImagesList(thread.id).then(data => {
 
@@ -79,7 +81,7 @@ export class HomeComponent implements OnInit {
 					this.images.push(newImageMeta);
 					i++;
 					this.newImagesLoadedCount++;
-					if(i < this.newImagesCount) {
+					if(i < this.newImagesCount && this.downloading == true) {
 						fetch(i);
 					}
 				});
@@ -89,6 +91,10 @@ export class HomeComponent implements OnInit {
 			}
 
 		});
+	}
+
+	cancelDownload(): void {
+		this.downloading = false;
 	}
 
 	create(url: string, directory: string): void {
