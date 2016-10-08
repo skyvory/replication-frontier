@@ -112,8 +112,15 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	excludeImage(image:any):void {
+	excludeImage(image:any): void {
 		this.imageService.exclude(image.id).then(() => {
+			let index = this.images.indexOf(image);
+			this.images.splice(index, 1);
+		});
+	}
+
+	deleteImage(image:any): void {
+		this.imageService.block(image.id).then(() => {
 			let index = this.images.indexOf(image);
 			this.images.splice(index, 1);
 		});
