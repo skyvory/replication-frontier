@@ -8,7 +8,9 @@ import { routing } from './app.routing';
 
 import { ThreadService } from './thread.service';
 import { ImageService } from './image.service';
+import { SuffixService } from './suffix.service';
 import { HomeComponent } from './home.component';
+import { FolderComponent } from './folder.component';
 
 
 
@@ -41,6 +43,7 @@ import { HeroService }         from './hero.service';
 	declarations: [
 		AppComponent,
 		HomeComponent,
+		FolderComponent,
 
 
 		DashboardComponent,
@@ -51,6 +54,7 @@ import { HeroService }         from './hero.service';
 	providers: [
 		ThreadService,
 		ImageService,
+		SuffixService,
 
 
 		HeroService

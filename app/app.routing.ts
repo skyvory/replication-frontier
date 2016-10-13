@@ -2,6 +2,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home.component';
+import { FolderComponent } from './folder.component';
 
 
 import { HeroesComponent }      from './heroes.component';
@@ -19,7 +20,11 @@ const appRoutes: Routes = [
 		component: HomeComponent,
 	},
 	{
-		path: 'refresh',
+		path: 'folder',
+		component: FolderComponent,
+	},
+	{
+		path: 'index',
 		redirectTo: '/home',
 	},
 	// {

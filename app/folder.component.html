@@ -1,0 +1,17 @@
+<h2>Suffix</h2>
+
+<div>
+	<label>Name: </label>
+	<input #newSuffixName />
+	<button (click)="createSuffix(newSuffixName.value);">Create</button>
+</div>
+
+<div>
+	<ul>
+		<li *ngFor="let suffix of suffixes">
+			<button (click)="deleteSuffix(suffix)">X</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<span>{{suffix.name}}</span>
+		</li>
+	</ul>
+</div>
