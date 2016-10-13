@@ -5,8 +5,12 @@
 	<input #newThreadUrl />
 	<label>Download Directory: </label>
 	<input #newThreadDownloadDirectory />
+	<select [(ngModel)]="suffixSelection" (ngModelChange)="newThreadDownloadDirectory.value = $event">
+		<option *ngFor="let suffix of suffixes" [ngValue]="suffix.name">{{suffix.name}}</option>
+	</select>
 	<button (click)="create(newThreadUrl.value, newThreadDownloadDirectory.value);">Create</button>
 </div>
+
 
 <div style="width:100%;">
 	<div style="width:38%;float:left;">

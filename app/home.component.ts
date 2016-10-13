@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Thread } from './thread';
 import { ThreadService } from './thread.service';
 import { ImageService } from './image.service';
+import { SuffixService } from './suffix.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,11 +16,13 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 	threads: Thread[];
 	images: any[];
+	suffixes: any[];
 
 	constructor(
 		private router: Router,
 		private threadService: ThreadService,
 		private imageService: ImageService,
+		private suffixService: SuffixService,
 	) {}
 
 	getThreads(): void {
@@ -132,7 +135,18 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
+	getSuffixes(): void {
+		this.suffixService.get().then(data => {
+			this.suffixes = data;
+		});
+	}
+
+	applySuffix(event:any): void {
+		// console.log(event);
+	}
+
 	ngOnInit(): void {
 		this.getThreads();
+		this.getSuffixes();
 	}
 }
