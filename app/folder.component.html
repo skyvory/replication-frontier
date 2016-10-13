@@ -9,7 +9,7 @@
 <div>
 	<ul>
 		<li *ngFor="let suffix of suffixes">
-			<button (click)="deleteSuffix(suffix)">X</button>
+			<button (click)="deleteSuffix(suffix); newSuffixName.value = ''; ">X</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			<span>{{suffix.name}}</span>
 		</li>
