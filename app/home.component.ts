@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
 	getThreads(): void {
 		this.threadService.getThreads().then(threads => {
 			this.threads = threads;
-			console.log(this.threads);
 		});
 	}
 
@@ -64,10 +63,9 @@ export class HomeComponent implements OnInit {
 			var i = 0;
 			// define fetch as scoped function
 			let fetch = (imageIndex:number) => {
-				console.warn(data.images[Object.keys(data.images)[i]]);
 
 				this.imageService.loadImage(thread.id, data.images[Object.keys(data.images)[i]]).then(imageMetaData => {
-					console.log("IMAGE LOADED");
+					console.log(imageMetaData.name + " loaded");
 					let newImageMeta = {
 						'id': imageMetaData.id,
 						'thread_id': thread.id,
