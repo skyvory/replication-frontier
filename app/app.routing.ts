@@ -27,10 +27,11 @@ const appRoutes: Routes = [
 		path: 'index',
 		redirectTo: '/home',
 	},
-	// {
-	// 	path: '**',
-	// 	component: HomeComponent,
-	// },
+	{
+		path: '**',
+		redirectTo: '/home',
+		// component: HomeComponent,
+	},
 
 	
 {
