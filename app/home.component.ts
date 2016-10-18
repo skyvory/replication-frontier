@@ -91,6 +91,13 @@ export class HomeComponent implements OnInit {
 				fetch(i);
 			}
 
+		}).catch(error => {
+			if(error.status == 404) {
+				console.info("THREAD IS CLOSED", error.status, error.statusText);
+				// > thread closed notification
+				let index = this.threads.indexOf(thread);
+				this.threads.splice(index, 1);
+			}
 		});
 	}
 
@@ -109,6 +116,11 @@ export class HomeComponent implements OnInit {
 				'status': 1,
 			};
 			this.threads.push(newThread);
+		}).catch(error => {
+			if(error.status == 404) {
+				console.info("THREAD IS CLOSED", error.status, error.statusText);
+				// >>> thread closed notification
+			}
 		});
 	}
 
