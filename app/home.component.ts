@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 	moduleId: module.id,
 	selector: 'home-selector',
 	templateUrl: 'home.component.html',
+	styles: [`
+		.closed {
+			background-color: #ffe8b7;
+		}
+	`],
 	styleUrls: [],
 	providers: [ThreadService]
 })
