@@ -101,7 +101,8 @@ export class HomeComponent implements OnInit {
 				console.info("THREAD IS CLOSED", error.status, error.statusText);
 				// > thread closed notification
 				let index = this.threads.indexOf(thread);
-				this.threads.splice(index, 1);
+				this.threads[Object.keys(this.threads)[index]].status = 3;
+				// this.threads.splice(index, 1);
 			}
 		});
 	}
