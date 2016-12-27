@@ -12,24 +12,11 @@ import { SuffixService } from './suffix.service';
 import { HomeComponent } from './home.component';
 import { FolderComponent } from './folder.component';
 
-
-
-
-
-
 import './rxjs-extensions';
 
 // Imports for loading & configuring the in-memory web api
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 // import { InMemoryDataService }  from './in-memory-data.service';
-
-
-import { DashboardComponent }     from './dashboard.component';
-import { HeroesComponent }     from './heroes.component';
-import { HeroSearchComponent }     from './hero-search.component';
-import { HeroDetailComponent } from './hero-detail.component';
-import { HeroService }         from './hero.service';
-
 
 @NgModule({
 	imports: [
@@ -43,21 +30,12 @@ import { HeroService }         from './hero.service';
 	declarations: [
 		AppComponent,
 		HomeComponent,
-		FolderComponent,
-
-
-		DashboardComponent,
-		HeroDetailComponent,
-		HeroesComponent,
-		HeroSearchComponent
+		FolderComponent
 	],
 	providers: [
 		ThreadService,
 		ImageService,
-		SuffixService,
-
-
-		HeroService
+		SuffixService
 	],
 	bootstrap: [ AppComponent ]
 })
