@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
 	// moduleId: module.id,
 	selector: 'home-selector',
-	templateUrl: 'home.component.html',
+	templateUrl: 'app/home.component.html',
 	styles: [`
 		.closed {
 			background-color: #ffe8b7;

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
 	// moduleId: module.id,
 	selector: 'folder-selector',
-	templateUrl: 'folder.component.html',
+	templateUrl: 'app/folder.component.html',
 	styleUrls: [],
 	providers: [SuffixService]
 })
