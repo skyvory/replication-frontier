@@ -6,7 +6,7 @@ import { SuffixService } from './suffix.service';
 import { Router } from '@angular/router';
 
 @Component({
-	moduleId: module.id,
+	// moduleId: module.id,
 	selector: 'home-selector',
 	templateUrl: 'home.component.html',
 	styles: [`

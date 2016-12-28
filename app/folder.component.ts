@@ -3,7 +3,7 @@ import { SuffixService } from './suffix.service';
 import { Router } from '@angular/router';
 
 @Component({
-	moduleId: module.id,
+	// moduleId: module.id,
 	selector: 'folder-selector',
 	templateUrl: 'folder.component.html',
 	styleUrls: [],
