@@ -50,20 +50,25 @@ export class HomeComponent implements OnInit {
 	}
 
 	// assigned as global variable for progress status on UI
-	newImagesCount:number = 0;
-	newImagesLoadedCount = 0;
-	downloading = false;
+	// newImagesCount:number = 0;
+	// newImagesLoadedCount = 0;
+	// downloading = false;
 
 	loadNewImages(thread):void {
 		// reset image count status value
-		this.newImagesCount = 0;
-		this.newImagesLoadedCount = 0;
-		this.downloading = true;
+		// this.newImagesCount = 0;
+		// this.newImagesLoadedCount = 0;
+		// this.downloading = true;
+
+		thread.newImagesCount = 0;
+		thread.newImagesLoadedCount = 0;
+		thread.downloading = true;
 
 		this.threadService.getNewImagesList(thread.id).then(data => {
 
 			let newImages = data.images;
-			this.newImagesCount = data.images.length;
+			thread.newImagesCount = data.images.length;
+			// this.newImagesCount = data.images.length;
 
 			var i = 0;
 			// define fetch as scoped function
@@ -86,13 +91,17 @@ export class HomeComponent implements OnInit {
 
 					this.images.push(newImageMeta);
 					i++;
-					this.newImagesLoadedCount++;
-					if(i < this.newImagesCount && this.downloading == true) {
+					// this.newImagesLoadedCount++;
+					// if(i < this.newImagesCount && this.downloading == true) {
+					// 	fetch(i);
+					// }
+					thread.newImagesLoadedCount++;
+					if(i < thread.newImagesCount && thread.downloading == true) {
 						fetch(i);
 					}
 				});
 			}
-			if(this.newImagesCount > 0) {
+			if(thread.newImagesCount > 0) {
 				fetch(i);
 			}
 
@@ -107,8 +116,9 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
-	cancelDownload(): void {
-		this.downloading = false;
+	cancelDownload(thread): void {
+		thread.downloading = false;
+		// this.downloading = false;
 	}
 
 	create(url: string, directory: string): void {
