@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
 	selector: 'my-app',
 	template: `
-		<nav>
+		<nav style="margin:-20px 0 -10px">
 		<a routerLink="/home" routerLinkActive="active">Home</a>
 		<a routerLink="/folder" routerLinkActive="active">Folder</a>
 		</nav>

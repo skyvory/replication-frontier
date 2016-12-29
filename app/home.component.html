@@ -1,4 +1,4 @@
-<h2>Threads</h2>
+<br>
 
 <div>
 	<label>URL: </label>
@@ -13,7 +13,7 @@
 
 
 <div style="width:100%;">
-	<div style="width:38%;float:left;">
+	<div style="width:38%;float:left;height:90%;overflow-y:scroll;">
 	<ol>
 		<li *ngFor="let thread of threads" [class.closed]="thread.status == 3">
 			<span style="font-size:0.7em;"><strong>{{thread.id}}</strong> {{thread.name}} </span>
@@ -36,7 +36,7 @@
 		</li>
 	</ol>
 	</div>
-	<div style="width:60%;float:left;margin-top:30px;" *ngIf="images">
+	<div style="width:60%;float:left;height:90%;overflow-y:scroll;" *ngIf="images">
 		<!--<div *ngIf="newImagesCount != newImagesLoadedCount && downloading == true">
 			<span>Download: {{newImagesLoadedCount}}/{{newImagesCount}}</span>
 			<button (click)="cancelDownload()">Cancel Download</button>
