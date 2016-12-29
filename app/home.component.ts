@@ -175,4 +175,15 @@ export class HomeComponent implements OnInit {
 		this.getThreads();
 		this.getSuffixes();
 	}
+
+	toggle = {
+		images: true
+	};
+
+	toggleImagesDisplay():void {
+		if(this.toggle.images === true)
+			this.toggle.images = false;
+		else
+			this.toggle.images = true;
+	}
 }
