@@ -29,7 +29,7 @@
 			<button (click)="viewImages(thread)">View Images</button>
 			<button (click)="loadNewImages(thread)">Load All New</button>
 			&nbsp;
-			<span *ngIf="thread.newImagesLoadedCount > 0 || thread.newImagesCount > 0">
+			<span *ngIf="thread.newImagesCount != thread.newImagesLoadedCount && thread.downloading == true">
 				{{thread.newImagesLoadedCount}}/{{thread.newImagesCount}}
 				<button (click)="cancelDownload(thread)">Cancel</button>
 			</span>
