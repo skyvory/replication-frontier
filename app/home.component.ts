@@ -186,4 +186,8 @@ export class HomeComponent implements OnInit {
 		else
 			this.toggle.images = true;
 	}
+
+	clearImagesDisplay():void {
+		this.images = [];
+	}
 }

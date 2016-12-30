@@ -38,6 +38,9 @@
 	</div>
 
 	<button (click)="toggleImagesDisplay()">Toggle images {{toggle.images == true ? 'off' : 'on'}}</button>
+	&nbsp;
+	<button (click)="clearImagesDisplay()">Clear images</button>
+	
 	<div style="width:60%;float:left;height:90%;overflow-y:scroll;">
 		<!--<div *ngIf="newImagesCount != newImagesLoadedCount && downloading == true">
 			<span>Download: {{newImagesLoadedCount}}/{{newImagesCount}}</span>
