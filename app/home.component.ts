@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 
 export class HomeComponent implements OnInit {
 	threads: Thread[];
-	images: any[];
+	images: any = [];
 	suffixes: any[];
 
 	constructor(
