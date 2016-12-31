@@ -13,6 +13,12 @@ import { Router } from '@angular/router';
 		.closed {
 			background-color: #ffe8b7;
 		}
+		.downloading {
+			background-color: #818dfc;
+		}
+		.finished {
+			background-color: #a8ffb9;
+		}
 	`],
 	styleUrls: [],
 	providers: [ThreadService]
@@ -63,6 +69,7 @@ export class HomeComponent implements OnInit {
 		thread.newImagesCount = 0;
 		thread.newImagesLoadedCount = 0;
 		thread.downloading = true;
+		thread.downloadStatus = 'downloading';
 
 		this.threadService.getNewImagesList(thread.id).then(data => {
 
@@ -99,15 +106,19 @@ export class HomeComponent implements OnInit {
 					if(thread.newImagesLoadedCount < thread.newImagesCount && thread.downloading == true) {
 						fetch(thread.newImagesLoadedCount);
 					}
-					else
+					else {
 						thread.downloading = false;
+						thread.downloadStatus = 'finished';
+					}
 				});
 			}
 			if(thread.newImagesCount > 0) {
 				fetch(thread.newImagesLoadedCount);
 			}
-			else
+			else {
 				thread.downloading = false;
+				thread.downloadStatus = 'finished';
+			}
 
 		}).catch(error => {
 			if(error.status == 404) {
@@ -115,6 +126,8 @@ export class HomeComponent implements OnInit {
 				// > thread closed notification
 				let index = this.threads.indexOf(thread);
 				this.threads[Object.keys(this.threads)[index]].status = 3;
+				this.threads[Object.keys(this.threads)[index]].downloading = false;
+				this.threads[Object.keys(this.threads)[index]].downloadStatus = 'idle';
 				// this.threads.splice(index, 1);
 			}
 		});
@@ -123,6 +136,7 @@ export class HomeComponent implements OnInit {
 	cancelDownload(thread): void {
 		thread.downloading = false;
 		// this.downloading = false;
+		thread.downloadStatus = 'idle';
 	}
 
 	create(url: string, directory: string): void {

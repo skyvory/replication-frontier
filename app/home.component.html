@@ -15,7 +15,7 @@
 <div style="width:100%;">
 	<div style="width:38%;float:left;height:90%;overflow-y:scroll;">
 	<ol>
-		<li *ngFor="let thread of threads" [class.closed]="thread.status == 3">
+		<li *ngFor="let thread of threads" [class.closed]="thread.status == 3" [class.downloading]="thread.downloadStatus == 'downloading'" [class.finished]="thread.downloadStatus == 'finished'">
 			<span style="font-size:0.7em;"><strong>{{thread.id}}</strong> {{thread.name}} </span>
 			<br />
 			<span style="font-size:0.9em;"><em>{{thread.url}}</em></span>
