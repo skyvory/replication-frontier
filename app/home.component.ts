@@ -99,11 +99,15 @@ export class HomeComponent implements OnInit {
 					if(thread.newImagesLoadedCount < thread.newImagesCount && thread.downloading == true) {
 						fetch(thread.newImagesLoadedCount);
 					}
+					else
+						thread.downloading = false;
 				});
 			}
 			if(thread.newImagesCount > 0) {
 				fetch(thread.newImagesLoadedCount);
 			}
+			else
+				thread.downloading = false;
 
 		}).catch(error => {
 			if(error.status == 404) {
