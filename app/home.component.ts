@@ -70,39 +70,39 @@ export class HomeComponent implements OnInit {
 			thread.newImagesCount = data.images.length;
 			// this.newImagesCount = data.images.length;
 
-			var i = 0;
+			// var i = 0;
 			// define fetch as scoped function
 			let fetch = (imageIndex:number) => {
 
-				this.imageService.loadImage(thread.id, data.images[Object.keys(data.images)[i]]).then(imageMetaData => {
+				this.imageService.loadImage(thread.id, data.images[Object.keys(data.images)[thread.newImagesLoadedCount]]).then(imageMetaData => {
 					console.log(imageMetaData.name + " loaded");
 					let newImageMeta = {
 						'id': imageMetaData.id,
 						'thread_id': thread.id,
-						'url': data.images[Object.keys(data.images)[i]],
+						'url': data.images[Object.keys(data.images)[thread.newImagesLoadedCount]],
 						'name': imageMetaData.name,
 						'size': imageMetaData.size,
 						'thumbnail_url': 'http://localhost/replication-dimension/public/' + imageMetaData.thumb,
 						'download_status': 1,
 					};
-					
+
 					// not yet used indexing to append data directly to threads variable
 					// let threadIndex = this.threads.indexOf(thread);
 
 					this.images.push(newImageMeta);
-					i++;
+					// i++;
 					// this.newImagesLoadedCount++;
 					// if(i < this.newImagesCount && this.downloading == true) {
 					// 	fetch(i);
 					// }
 					thread.newImagesLoadedCount++;
-					if(i < thread.newImagesCount && thread.downloading == true) {
-						fetch(i);
+					if(thread.newImagesLoadedCount < thread.newImagesCount && thread.downloading == true) {
+						fetch(thread.newImagesLoadedCount);
 					}
 				});
 			}
 			if(thread.newImagesCount > 0) {
-				fetch(i);
+				fetch(thread.newImagesLoadedCount);
 			}
 
 		}).catch(error => {
