@@ -115,7 +115,17 @@ export class HomeComponent implements OnInit {
 							thread.downloadStatus = 'finished';
 						}
 					}
-				});
+				})
+				.catch((err) => {
+					console.error("ERR in COMPONENT", err);
+					// skip image in question
+					console.log("skipping problematic image, proceeding to load next image in list");
+					thread.newImagesLoadedCount++;
+					if(thread.newImagesLoadedCount < thread.newImagesCount && thread.downloading == true) {
+						fetch(thread.newImagesLoadedCount);
+					}
+				})
+				;
 			}
 			if(thread.newImagesCount > 0) {
 				fetch(thread.newImagesLoadedCount);

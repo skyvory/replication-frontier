@@ -14,7 +14,10 @@ export class ImageService {
 		return this.http.post(`http://localhost/replication-dimension/public/api/image/load`, JSON.stringify({thread_id: threadId, url: imageUrl}), {headers: this.headers})
 			.toPromise()
 			.then(response => response.json().data as any[])
-			.catch(this.handleError);
+			.catch((err) => {
+				console.error("ERROR GENERATED IN SERVICE", err);
+			});
+			// .catch(this.handleError);
 	}
 
 	exclude(imageId:number): Promise<any> {
