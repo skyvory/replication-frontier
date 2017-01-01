@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
 	selector: 'home-selector',
 	templateUrl: 'app/home.component.html',
 	styles: [`
-		.closed {
+		.paused {
 			background-color: #ffe8b7;
 		}
+		.closed {
+			background-color: #fe94a4;
+		}
 		.downloading {
-			background-color: #818dfc;
+			background-color: #c7ccfe;
 		}
 		.finished {
 			background-color: #a8ffb9;
