@@ -63,6 +63,13 @@ export class HomeComponent implements OnInit {
 	// newImagesLoadedCount = 0;
 	// downloading = false;
 
+	proceedLoadNewImages(thread):void {
+		let index = this.threads.indexOf(thread);
+		let nextThread = this.threads[Object.keys(this.threads)[index + 1]];
+		console.log("loading next thread", nextThread);
+		this.loadNewImages(nextThread);
+	}
+
 	loadNewImages(thread):void {
 		// reset image count status value
 		// this.newImagesCount = 0;
@@ -113,6 +120,9 @@ export class HomeComponent implements OnInit {
 						if(thread.downloadStatus == 'downloading') {
 							thread.downloading = false;
 							thread.downloadStatus = 'finished';
+							if(localStorage.getItem('config:auto-proceed-thread-load') == 'true' || true) {
+								this.proceedLoadNewImages(thread);
+							}
 						}
 					}
 				})
@@ -134,6 +144,9 @@ export class HomeComponent implements OnInit {
 				if(thread.downloadStatus == 'downloading') {
 					thread.downloading = false;
 					thread.downloadStatus = 'finished';
+					if(localStorage.getItem('config:auto-proceed-thread-load') == 'true' || true) {
+						this.proceedLoadNewImages(thread);
+					}
 				}
 			}
 
