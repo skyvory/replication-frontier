@@ -107,8 +107,10 @@ export class HomeComponent implements OnInit {
 						fetch(thread.newImagesLoadedCount);
 					}
 					else {
-						thread.downloading = false;
-						thread.downloadStatus = 'finished';
+						if(thread.downloadStatus == 'downloading') {
+							thread.downloading = false;
+							thread.downloadStatus = 'finished';
+						}
 					}
 				});
 			}
@@ -116,8 +118,10 @@ export class HomeComponent implements OnInit {
 				fetch(thread.newImagesLoadedCount);
 			}
 			else {
-				thread.downloading = false;
-				thread.downloadStatus = 'finished';
+				if(thread.downloadStatus == 'downloading') {
+					thread.downloading = false;
+					thread.downloadStatus = 'finished';
+				}
 			}
 
 		}).catch(error => {
@@ -146,7 +150,7 @@ export class HomeComponent implements OnInit {
 				'name': data.thread.name,
 				'last_update': data.thread.last_update,
 				'url': url,
-				'download_directory': directory,
+				'download_directory': data.thread.download_directory,
 				'status': 1,
 			};
 			this.threads.push(newThread);
