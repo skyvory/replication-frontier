@@ -67,8 +67,10 @@ export class HomeComponent implements OnInit {
 	proceedLoadNewImages(thread):void {
 		let index = this.threads.indexOf(thread);
 		let nextThread = this.threads[Object.keys(this.threads)[index + 1]];
-		console.log("loading next thread", nextThread);
-		this.loadNewImages(nextThread);
+		if(nextThread.status != 3) {
+			console.log("loading next thread", nextThread);
+			this.loadNewImages(nextThread);
+		}
 	}
 
 	loadNewImages(thread):void {
@@ -286,7 +288,12 @@ export class HomeComponent implements OnInit {
 						break;
 					}
 				}
-				this.loadNewImages(startFromThread);
+				if(this.isThreadOpen(startFromThread)) {
+					this.loadNewImages(startFromThread);
+				}
+				else {
+					startFromThread.isScheduled = false;
+				}
 			}, 60*60*1000);
 		}
 		else {
@@ -309,8 +316,22 @@ export class HomeComponent implements OnInit {
 				break;
 			}
 		}
-		console.log("loading next thread", nextThread);
-		this.loadNewImages(nextThread);
+		if(this.isThreadOpen(nextThread)) {
+			console.log("loading next thread", nextThread);
+			this.loadNewImages(nextThread);
+		}
+		else {
+			nextThread.isScheduled = false;
+		}
+	}
+
+	isThreadOpen(thread) {
+		if(thread.status != 3) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 }
