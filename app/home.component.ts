@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
 						if(thread.downloadStatus == 'downloading') {
 							thread.downloading = false;
 							thread.downloadStatus = 'finished';
-							if(this.toggle.isTimerActive) {
+							if(this.toggle.isTimerActive && localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 								this.proceedScheduledLoadNewImages(thread);
 							}
 							else if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
 				if(thread.downloadStatus == 'downloading') {
 					thread.downloading = false;
 					thread.downloadStatus = 'finished';
-					if(this.toggle.isTimerActive) {
+					if(this.toggle.isTimerActive && localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 						this.proceedScheduledLoadNewImages(thread);
 					}
 					else if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
