@@ -294,6 +294,10 @@ export class HomeComponent implements OnInit {
 			this.toggle.isTimerActive = false;
 		}
 	}
+	disableTimer():void {
+		clearInterval(this.timer);
+		this.toggle.isTimerActive = false;
+	}
 
 	proceedScheduledLoadNewImages(thread):void {
 		let index = this.threads.indexOf(thread);
