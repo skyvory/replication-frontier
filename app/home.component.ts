@@ -166,6 +166,7 @@ export class HomeComponent implements OnInit {
 				this.threads[Object.keys(this.threads)[index]].downloading = false;
 				this.threads[Object.keys(this.threads)[index]].downloadStatus = 'idle';
 				// this.threads.splice(index, 1);
+				this.threads[Object.keys(this.threads)[index]].isScheduled = false;
 			}
 		});
 	}
