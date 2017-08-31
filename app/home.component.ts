@@ -293,6 +293,9 @@ export class HomeComponent implements OnInit {
 				}
 				else {
 					startFromThread.isScheduled = false;
+					if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
+						this.proceedScheduledLoadNewImages(startFromThread);
+					}
 				}
 			}, 60*60*1000);
 		}
@@ -322,6 +325,9 @@ export class HomeComponent implements OnInit {
 		}
 		else {
 			nextThread.isScheduled = false;
+			if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
+				this.proceedScheduledLoadNewImages(nextThread);
+			}
 		}
 	}
 
