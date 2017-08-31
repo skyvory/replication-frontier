@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
 						if(thread.downloadStatus == 'downloading') {
 							thread.downloading = false;
 							thread.downloadStatus = 'finished';
-							if(localStorage.getItem('config:auto-proceed-thread-load') == 'true' || true) {
+							if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 								this.proceedLoadNewImages(thread);
 							}
 						}
@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
 				if(thread.downloadStatus == 'downloading') {
 					thread.downloading = false;
 					thread.downloadStatus = 'finished';
-					if(localStorage.getItem('config:auto-proceed-thread-load') == 'true' || true) {
+					if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 						this.proceedLoadNewImages(thread);
 					}
 				}
@@ -238,4 +238,31 @@ export class HomeComponent implements OnInit {
 	clearImagesDisplay():void {
 		this.images = [];
 	}
+
+	getAutoProceedThreadLoadStatus():boolean {
+		let autoproceedthreadValue:string = localStorage.getItem('config:auto-proceed-thread-load');
+		if(autoproceedthreadValue != "1" && autoproceedthreadValue != "0") {
+			localStorage.setItem('config:auto-proceed-thread-load', "1");
+		}
+		let status:boolean;
+		if(autoproceedthreadValue == "1") {
+			status = true;
+		}
+		else {
+			status = false;
+		}
+		return status;
+	}
+
+	toggleAutoProceedThreadLoad():void {
+		let autoproceedthreadValue = localStorage.getItem('config:auto-proceed-thread-load');
+		if(autoproceedthreadValue == "1") {
+			localStorage.setItem('config:auto-proceed-thread-load', "0");
+		}
+		else {
+			localStorage.setItem('config:auto-proceed-thread-load', "1");
+		}
+
+	}
+
 }

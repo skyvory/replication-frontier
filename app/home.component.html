@@ -40,6 +40,8 @@
 	<button (click)="toggleImagesDisplay()">Toggle images {{toggle.images == true ? 'off' : 'on'}}</button>
 	&nbsp;
 	<button (click)="clearImagesDisplay()">Clear images</button>
+	&nbsp;
+	<input type="checkbox" [checked]="getAutoProceedThreadLoadStatus()" (change)="toggleAutoProceedThreadLoad()"> Auto proceed thread
 	
 	<div style="width:60%;float:left;height:90%;overflow-y:scroll;">
 		<!--<div *ngIf="newImagesCount != newImagesLoadedCount && downloading == true">
