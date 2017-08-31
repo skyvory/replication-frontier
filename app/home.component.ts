@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
 	threads: Thread[];
 	images: any = [];
 	suffixes: any[];
+	timer:any;
 
 	constructor(
 		private router: Router,
@@ -120,7 +121,10 @@ export class HomeComponent implements OnInit {
 						if(thread.downloadStatus == 'downloading') {
 							thread.downloading = false;
 							thread.downloadStatus = 'finished';
-							if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
+							if(this.toggle.isTimerActive) {
+								this.proceedScheduledLoadNewImages(thread);
+							}
+							else if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 								this.proceedLoadNewImages(thread);
 							}
 						}
@@ -144,7 +148,10 @@ export class HomeComponent implements OnInit {
 				if(thread.downloadStatus == 'downloading') {
 					thread.downloading = false;
 					thread.downloadStatus = 'finished';
-					if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
+					if(this.toggle.isTimerActive) {
+						this.proceedScheduledLoadNewImages(thread);
+					}
+					else if(localStorage.getItem('config:auto-proceed-thread-load') == "1") {
 						this.proceedLoadNewImages(thread);
 					}
 				}
@@ -178,6 +185,7 @@ export class HomeComponent implements OnInit {
 				'url': url,
 				'download_directory': data.thread.download_directory,
 				'status': 1,
+				'isScheduled': false,
 			};
 			this.threads.push(newThread);
 		}).catch(error => {
@@ -225,7 +233,8 @@ export class HomeComponent implements OnInit {
 	}
 
 	toggle = {
-		images: true
+		images: true,
+		isTimerActive: false
 	};
 
 	toggleImagesDisplay():void {
@@ -263,6 +272,40 @@ export class HomeComponent implements OnInit {
 			localStorage.setItem('config:auto-proceed-thread-load', "1");
 		}
 
+	}
+
+	toggleTimer():void {
+		if(this.toggle.isTimerActive == false) {
+			this.toggle.isTimerActive = true;
+			this.timer = setInterval(() => {
+				let startFromThread:any;
+				for(let thread of this.threads) {
+					if(thread.isScheduled == true) {
+						startFromThread = thread;
+						break;
+					}
+				}
+				this.loadNewImages(startFromThread);
+			}, 60*60*1000);
+		}
+		else {
+			clearInterval(this.timer);
+			this.toggle.isTimerActive = false;
+		}
+	}
+
+	proceedScheduledLoadNewImages(thread):void {
+		let index = this.threads.indexOf(thread);
+		let nextThread;
+		while(nextThread.isScheduled == false || index < this.threads.length) {
+			index++;
+			nextThread = this.threads[Object.keys(this.threads)[index]];
+			if(nextThread.isScheduled == true) {
+				break;
+			}
+		}
+		console.log("loading next thread", nextThread);
+		this.loadNewImages(nextThread);
 	}
 
 }

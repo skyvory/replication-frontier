@@ -28,6 +28,7 @@
 			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button (click)="viewImages(thread)">View Images</button>
 			<button (click)="loadNewImages(thread)">Load All New</button>
+			<input type="checkbox" [checked]="thread.isScheduled" [(ngModel)]="thread.isScheduled" title="scheduled">
 			&nbsp;
 			<span *ngIf="thread.newImagesCount != thread.newImagesLoadedCount && thread.downloading == true">
 				{{thread.newImagesLoadedCount}}/{{thread.newImagesCount}}
@@ -42,6 +43,8 @@
 	<button (click)="clearImagesDisplay()">Clear images</button>
 	&nbsp;
 	<input type="checkbox" [checked]="getAutoProceedThreadLoadStatus()" (change)="toggleAutoProceedThreadLoad()"> Auto proceed thread
+	&nbsp;
+	<input type="checkbox" [checked]="toggle.isTimerActive" (change)="toggleTimer()">Timer
 	
 	<div style="width:60%;float:left;height:90%;overflow-y:scroll;">
 		<!--<div *ngIf="newImagesCount != newImagesLoadedCount && downloading == true">
