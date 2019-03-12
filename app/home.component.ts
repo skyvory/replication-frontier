@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
 			let availableImages = [];
 			for(let i of data.images) {
 				if(i.download_status == 1) {
-					i.thumbnail_url = 'http://localhost/replication-dimension/public/thumbnails/' + i.thread_id + '/~thumb_' + i.name;
+					i.thumbnail_url = 'http://localhost/replication-dimension/public/thumbnails/' + i.thread_id + '/~thumb_' + i.name + '.jpg';
 					availableImages.push(i);
 				}
 			}
