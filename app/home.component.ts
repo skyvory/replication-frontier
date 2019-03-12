@@ -297,7 +297,7 @@ export class HomeComponent implements OnInit {
 						this.proceedScheduledLoadNewImages(startFromThread);
 					}
 				}
-			}, 60*60*1000);
+			}, 3*60*60*1000);
 		}
 		else {
 			clearInterval(this.timer);
